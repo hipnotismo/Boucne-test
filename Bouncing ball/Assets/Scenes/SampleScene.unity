@@ -232,8 +232,8 @@ GameObject:
   - component: {fileID: 667774546}
   - component: {fileID: 667774545}
   - component: {fileID: 667774544}
-  - component: {fileID: 667774543}
   - component: {fileID: 667774548}
+  - component: {fileID: 667774549}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -241,20 +241,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &667774543
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 667774542}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0d6aa0e5aa7c5f4fa6e4ead9f7801dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  initialVelocity: {x: 2, y: 2, z: 0}
-  minVelocity: 10
 --- !u!135 &667774544
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -262,7 +248,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 667774542}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: af72b27fda283ec4ea0880c7e0c3cbe5, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -288,7 +274,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: deba89f27c996454cb3539e7b16fc759, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -349,6 +335,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &667774549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 667774542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 377a584583c4054458864cd31d09bb54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upMultiply: 10
+  minForce: {x: -1, y: -1, z: 0}
+  maxForce: {x: 1, y: 1, z: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -714,7 +715,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.45, y: 2.56, z: -10}
+  m_LocalPosition: {x: 6.45, y: 0.86, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

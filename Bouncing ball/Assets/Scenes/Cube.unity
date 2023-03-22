@@ -234,9 +234,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30205e5b654942647bec4f20a5a3c84b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 2
+  type: 4
   obj: {fileID: 87779385}
   m_Thrust: 20
+  speed: 10
 --- !u!54 &87779391
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -477,9 +478,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30205e5b654942647bec4f20a5a3c84b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 1
+  type: 0
   obj: {fileID: 1710552712}
   m_Thrust: 20
+  speed: 10
 --- !u!65 &1710552714
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -12,6 +12,7 @@ public class CubeMovement : MonoBehaviour
     Rigidbody m_Rigidbody;
     public float m_Thrust = 10f;
 
+    public float speed;
     // Start is called before the first frame update
 
     void Start()
@@ -82,9 +83,36 @@ public class CubeMovement : MonoBehaviour
 
                 }
                 break;
+
+            case 3:
+                moveCharacter(new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0f));
+
+                break;
             default:
                 break;
         }
        
+    }
+
+    private void FixedUpdate()
+    {
+        switch (type)
+        {
+            case 4:
+                movePersonaje(new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0f));
+
+                break;
+            default:
+                break;
+        }
+    }
+    void moveCharacter(Vector3 direction)
+    {
+        transform.Translate(direction * speed * Time.deltaTime);
+    }
+
+    void movePersonaje(Vector3 direction)
+    {
+        m_Rigidbody.AddForce(direction * speed);
     }
 }

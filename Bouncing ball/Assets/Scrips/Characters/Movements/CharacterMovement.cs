@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -20,6 +21,8 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] private float minJumpDistance;
 
     private bool _isJump;
+    private object _JumpCoorutine;
+    public float jumpBufferTime;
 
     private void Start()
     {
@@ -47,23 +50,53 @@ public class CharacterMovement : MonoBehaviour
 
     public void OnMove(InputValue input)
     {
-        var movement = input.Get<Vector2>();
-
-        Debug.Log(movement);
-        
+        var movement = input.Get<Vector2>();        
         
         currentMovement = new Vector3(movement.x,0,movement.y);
     }
 
     public void OnJump()
     {
-        _isJump = true;
+        if (_JumpCoorutine !=null)
+        {
+            StopCoroutine(JumpCorutine());
+        }
+        _JumpCoorutine =  StartCoroutine(JumpCorutine());
+        //_isJump = true;
 
+    }
+
+    private IEnumerator JumpCorutine()
+    {
+        if (!feetPivot)
+        {
+            yield break;
+        }
+        float timeElapsed = 0;
+
+        while (timeElapsed <= jumpBufferTime)
+        {
+            yield return new WaitForFixedUpdate();
+            if (Physics.Raycast(feetPivot.position, Vector3.down, out var hit, MaxDistance)
+            && hit.distance <= minJumpDistance)
+            {
+                rb.velocity = new Vector3(rb.velocity.x, y:0 ,rb.velocity.z);
+                rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+
+                if (timeElapsed > 0)
+                {
+                    Debug.Log(timeElapsed);
+                }
+                //rb.velocity = currentMovement * speed + Vector3.up * rb.velocity.y;
+                yield break;
+            }
+            //  rb.velocity = currentMovement * speed + Vector3.up * rb.velocity.y;
+            timeElapsed += Time.fixedDeltaTime;
+        }
     }
 
     public void OnSprint(InputValue input)
     {
-        Debug.Log("Sprint");
     }
 
     public void OnDrawGizmos()
